@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,12 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Job Recommendation as a Service</title>
 	
-	<link href="UI/bootstrap3/css/bootstrap.css" rel="stylesheet" />
-	<link href="UI/assets/css/get-shit-done.css" rel="stylesheet" />  
-	<link href="UI/assets/css/demo.css" rel="stylesheet" /> 
+	<link href="<c:url value="/resources/bootstrap3/css/bootstrap.css" />" rel="stylesheet" />
+	<link href="<c:url value="/resources/assets/css/get-shit-done.css" />" rel="stylesheet" />  
+	<link href="<c:url value="/resources/assets/css/demo.css" />" rel="stylesheet" /> 
 	
 	<!--     Font Awesome     -->
-	<link href="UI/bootstrap3/css/font-awesome.css" rel="stylesheet">
+	<link href="<c:url value="/resources/bootstrap3/css/font-awesome.css" />" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
   <style>
 	.main-wrap {
@@ -59,7 +60,8 @@
 		<div class="container" style="display:table; width:100%; height:100%;">
 		<div class="content">
 			
-			<table>
+			
+			<!-- <table>
 				<tr><h1>Let's get started!</h1></tr>
 				<tr><td><label for="name">Company Name: </label></td>
        				 <td><input type="text" id="name" name="name" value="" placeholder="ABC" required="required" autofocus="autofocus" /></td></tr>
@@ -74,7 +76,7 @@
         			<td><input type="password" id="password" name="password" value="" /></td></tr>
          
 				<tr><td><button class="btn btn-primary btn-lg">Next</button></td></tr>
-			</table>
+			</table> -->
 			
 			
 		</div>
@@ -83,13 +85,13 @@
 	</div>
 </body>
 
-	<script src="UI/jquery/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="UI/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-	<script src="UI/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-	<script src="UI/assets/js/gsdk-checkbox.js"></script>
-	<script src="UI/assets/js/gsdk-radio.js"></script>
-	<script src="UI/assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="UI/assets/js/get-shit-done.js"></script>		
-	<script src="UI/assets/js/custom.js"></script>
+	<script src="<c:url value="/resources/jquery/jquery-1.10.2.js" />" type="text/javascript"></script>
+	<script src="<c:url value="/resources/assets/js/jquery-ui-1.10.4.custom.min.js" />" type="text/javascript"></script>
+	<script src="<c:url value="/resources/bootstrap3/js/bootstrap.js" />" type="text/javascript"></script>
+	<script src="<c:url value="/resources/assets/js/gsdk-checkbox.js" />"></script>
+	<script src="<c:url value="/resources/assets/js/gsdk-radio.js" />"></script>
+	<script src="<c:url value="/resources/assets/js/gsdk-bootstrapswitch.js" />"></script>
+	<script src="<c:url value="/resources/assets/js/get-shit-done.js" />"></script>		
+	<script src="<c:url value="/resources/assets/js/custom.js" />"></script>
 	
 </html>

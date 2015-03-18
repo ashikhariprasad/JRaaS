@@ -37,7 +37,7 @@
 }
   </style>
 </head>
-<body style="background-color: #EFFBFB;">
+<body>
 	<div class="container">
 		<div id="navbar">
 			<nav class="navbar navbar-ct-blue" role="navigation">

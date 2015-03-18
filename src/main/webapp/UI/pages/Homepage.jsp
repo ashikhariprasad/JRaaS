@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Job Recommendation as a Service</title>
 
 <!-- <link href="UI/bootstrap3/css/bootstrap.css" rel="stylesheet" /> -->
@@ -13,6 +14,8 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/assets/css/demo.css" />"
 	rel="stylesheet" />
+<link href="<c:url value="/resources/assets/css/jraas.css" />"
+	rel="stylesheet" />
 
 <!--     Font Awesome     -->
 <link
@@ -20,21 +23,6 @@
 	rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Grand+Hotel'
 	rel='stylesheet' type='text/css'>
-<style>
-.main-wrap {
-	position: absolute;
-	top: 100px;
-	bottom: 50px;
-	overflow: auto;
-}
-
-.content {
-	display: table-cell;
-	height: 100%;
-	width: 100%;
-	vertical-align: middle;
-}
-</style>
 
 <script src="<c:url value="/resources/jquery/jquery-1.10.2.js" />"
 	type="text/javascript"></script>
@@ -54,87 +42,93 @@
 <script src="<c:url value="/resources/assets/js/get-shit-done.js" />"></script>
 <script src="<c:url value="/resources/assets/js/custom.js" />"></script>
 </head>
-<body style="background-color: #EFFBFB;">
+<body>
 	<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
+		// This is called with the results from from FB.getLoginStatus().
+		function statusChangeCallback(response) {
+			console.log('statusChangeCallback');
+			console.log(response);
+			// The response object is returned with a status field that lets the
+			// app know the current login status of the person.
+			// Full docs on the response object can be found in the documentation
+			// for FB.getLoginStatus().
+			if (response.status === 'connected') {
+				// Logged into your app and Facebook.
+				testAPI();
+			} else if (response.status === 'not_authorized') {
+				// The person is logged into Facebook, but not your app.
+				document.getElementById('status').innerHTML = 'Please log '
+						+ 'into this app.';
+			} else {
+				// The person is not logged into Facebook, so we're not sure if
+				// they are logged into this app or not.
+				document.getElementById('status').innerHTML = 'Please log '
+						+ 'into Facebook.';
+			}
+		}
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+		// This function is called when someone finishes with the Login
+		// Button.  See the onlogin handler attached to it in the sample
+		// code below.
+		function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+			});
+		}
 
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-  });
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '669400563172268',
+				cookie : true, // enable cookies to allow the server to access 
+				// the session
+				xfbml : true, // parse social plugins on this page
+				version : 'v2.2' // use version 2.2
+			});
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
+			// Now that we've initialized the JavaScript SDK, we call 
+			// FB.getLoginStatus().  This function gets the state of the
+			// person visiting this page and can return one of three states to
+			// the callback you provide.  They can be:
+			//
+			// 1. Logged into your app ('connected')
+			// 2. Logged into Facebook, but not your app ('not_authorized')
+			// 3. Not logged into Facebook and can't tell if they are logged into
+			//    your app or not.
+			//
+			// These three cases are handled in the callback function.
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+			});
 
-  };
+		};
 
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+		// Load the SDK asynchronously
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-</script>
+		// Here we run a very simple test of the Graph API after login is
+		// successful.  See statusChangeCallback() for when this call is made.
+		function testAPI() {
+			console.log('Welcome!  Fetching your information.... ');
+			FB
+					.api(
+							'/me',
+							function(response) {
+								console.log('Successful login for: '
+										+ response.name);
+								document.getElementById('status').innerHTML = 'Thanks for logging in, '
+										+ response.name + '!';
+							});
+		}
+	</script>
 	<div class="container">
 		<div id="navbar">
 			<nav class="navbar navbar-ct-blue" role="navigation">
@@ -178,57 +172,85 @@
 			</nav>
 		</div>
 
-		<div class="main-wrap">
-			<div class="container"
-				style="display: table; width: 100%; height: 100%;">
-				<div class="content">
-					<div class="col-md-1 col-md-offset-2">
-						<div id="map" style="width: 600px; height: 400px;"></div>
-						<div class="modal fade" id="loginModal" tabindex="-1"
-							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">Let's Get To
-											It!!</h4>
-									</div>
-									<div class="modal-body">
-										<div>
-											<label class="ct-blue"> <i>Email ID</i> <input
-												type="text" value="" placeholder="Your Email ID"
-												class="form-control" />
-											</label>
-											<div class="fb-login-button" data-max-rows="1"
-												data-size="medium" data-show-faces="false"
-												data-auto-logout-link="true"></div>
-											<div>
-												<script type="in/Login"></script>
-											</div>
-												<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
-										</div>
-										<div>
-											<label class="ct-blue"> <i>Password</i><input
-												type="password" value="" placeholder="Keep this a Secret!!"
-												class="form-control" />
-											</label>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-info btn-simple">Login</button>
-										<div class="divider"></div>
-										<button type="button" class="btn btn-default btn-simple"
-											data-dismiss="modal">Cancel</button>
-									</div>
+		<!-- <div class="main-wrap"> -->
+		<div class="container-fluid">
+			<!-- <div class="content">
+					<div class="col-md-1 col-md-offset-2"> -->
+			<div class="space-30"></div>
+			<div class="row">
+			<div id="map" class="col-xs-5 col-md-5 hidden-xs map"></div>			
+			<div class="col-xs-12 col-md-6 panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a href="#collapseOne" data-toggle="collapse">Job1 Title..</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse">
+						<div class="panel-body">
+							<p>This is the job description.</p>
+							<p>This is a detailed decription of the job</p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a href="#collapseTwo" data-toggle="collapse">Job2 Title..</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+						<div class="panel-body">
+							<p>This is the second job in the list.</p>
+						</div>
+					</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">Let's Get To It!!</h4>
+						</div>
+						<div class="modal-body">
+							<div>
+								<label class="ct-blue"> <i>Email ID</i> <input
+									type="text" value="" placeholder="Your Email ID"
+									class="form-control" />
+								</label>
+								<div class="fb-login-button" data-max-rows="1"
+									data-size="medium" data-show-faces="false"
+									data-auto-logout-link="true"></div>
+								<div>
+									<script type="in/Login"></script>
 								</div>
+								<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
 							</div>
+							<div>
+								<label class="ct-blue"> <i>Password</i> <input
+									type="password" value="" placeholder="Keep this a Secret!!"
+									class="form-control" />
+								</label>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-info btn-simple">Login</button>
+							<div class="divider"></div>
+							<button type="button" class="btn btn-default btn-simple"
+								data-dismiss="modal">Cancel</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- 	</div>
+		</div>
+	</div> -->
 </body>
 <script>
 	$(document).ready(function() {
@@ -239,13 +261,15 @@
 			},
 			stateStyles : {
 				fill : '#FFFFFF'
-			},
-			showLabels : true
+			}
 		});
 	});
 </script>
 <script>
 	$('#register_btn2').click(function() {
+		window.location.href = "whoareyou";
+	});
+	$('#register_btn1').click(function() {
 		window.location.href = "whoareyou";
 	});
 </script>
